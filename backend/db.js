@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv")
+dotenv.config()
 
 const url =
-  "mongodb+srv://Aditya:aditya12345@cluster0.llmhl7x.mongodb.net/dev-hub-community?retryWrites=true&w=majority";
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.llmhl7x.mongodb.net/dev-hub-community?retryWrites=true&w=majority`;
 module.exports.connect = () => {
   mongoose
     .connect(url, {
