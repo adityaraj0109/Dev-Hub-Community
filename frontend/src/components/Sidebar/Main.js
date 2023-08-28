@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Question from './Question'
 import './css/Main.css'
 
-function Main() {
+function Main({ questions }) {
   return (
     <div className='main'>
         <div className='main-container'>
@@ -15,7 +15,7 @@ function Main() {
                 </Link>
             </div>
             <div className='main-desc'>
-                <p> All question stat</p>
+                <p>{questions && questions.length} Questions</p>
                 <div className='main-filter'>
                     <div className='main-tabs'>
                         <div className='main-tab'>
@@ -34,14 +34,12 @@ function Main() {
                     </div>
                 </div>
             </div>
-            <div className='questions'>
-                <div className='question'>
-                    <Question/>
-                    <Question/>
-                    <Question/>
-                    <Question/>
-                    <Question/>
+            <div className="questions">
+            {questions?.map((_q) => (
+                <div className="question">
+                <Question data={_q} />
                 </div>
+            ))}
             </div>
         </div>
     </div>
